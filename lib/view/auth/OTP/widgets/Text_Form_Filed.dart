@@ -10,10 +10,12 @@ class CustomTextFormField extends StatelessWidget {
   final bool autofocus;
   FocusNode? focusNode;
   bool otp;
+  TextEditingController? controller;
   // ignore: prefer_const_constructors_in_immutables
   CustomTextFormField({
     Key? key,
     this.onChanged,
+    this.controller,
     this.otp = false,
     this.autofocus = false,
     this.focusNode,
@@ -26,6 +28,7 @@ class CustomTextFormField extends StatelessWidget {
       child: TextFormField(
           autofocus: autofocus,
           focusNode: focusNode,
+          controller: otp ? controller : TextEditingController(text: ''),
           style: TextStyle(fontSize: 20),
           keyboardType: TextInputType.number,
           textAlign: TextAlign.center,

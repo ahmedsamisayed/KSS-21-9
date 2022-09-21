@@ -40,7 +40,9 @@ class _OTPScreenState extends State<OTPScreen> {
                 alignment: Alignment.center,
               ),
               SizedBox(height: SizeConfig.screenheight! * .05),
-              OtpForm(),
+              Directionality(
+                  textDirection: TextDirection.ltr,
+                  child: OtpForm()),
               // OtpForm()
             ]),
           ),

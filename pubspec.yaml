@@ -42,7 +42,7 @@ dependencies:
   location: any
   geolocator: ^8.2.1
   dio: ^4.0.6
-  sms_autofill: ^2.2.0
+  telephony: ^0.2.0
   
   intl_phone_number_input: ^0.7.0+2
   image_picker: 

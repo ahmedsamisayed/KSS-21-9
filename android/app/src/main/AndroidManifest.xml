@@ -1,5 +1,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.omnia.kss">
+    <uses-permission android:name="android.permission.RECEIVE_SMS"/>
     <queries>
         <intent>
             <action android:name="android.intent.action.VIEW" />
@@ -20,6 +21,12 @@
         android:label="kss"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
+       <receiver android:name="com.shounakmulay.telephony.sms.IncomingSmsReceiver"
+           android:permission="android.permission.BROADCAST_SMS" android:exported="true">
+           <intent-filter>
+               <action android:name="android.provider.Telephony.SMS_RECEIVED"/>
+           </intent-filter>
+       </receiver>
         <meta-data android:name="com.google.android.geo.API_KEY"
                android:value="AIzaSyDQ4JkXTQM703UqI_Eg9oJ5jwOhC2T2RQI"/>
         <activity

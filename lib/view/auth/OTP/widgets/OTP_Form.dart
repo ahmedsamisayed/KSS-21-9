@@ -7,6 +7,9 @@ import '../../../../core/utils/size_config.dart';
 import '../../../../core/widgets/custom_buttom.dart';
 import '../../../../core/widgets/custom_text.dart';
 import 'biiuld_Timer.dart';
+import 'package:telephony/telephony.dart';
+
+final Telephony telephony = Telephony.instance;
 
 FocusNode myFocusNode = new FocusNode();
 
@@ -23,13 +26,30 @@ class _OtpFormState extends State<OtpForm> {
   FocusNode? pin3FocusNode;
 
   FocusNode? pin4FocusNode;
-
+  TextEditingController? otp1 ;
+  TextEditingController?  otp2 ;
+  TextEditingController?  otp3 ;
+  TextEditingController?  otp4;
   @override
   void initState() {
     super.initState();
+    telephony.listenIncomingSms(
+        onNewMessage: (SmsMessage message) {
+          if (message.address == 'KSS') {
+            setOTP(message.body ?? '');
+          }
+          print(message.body);
+          print(message.address);
+        },
+        listenInBackground: false
+    );
     pin2FocusNode = FocusNode();
     pin3FocusNode = FocusNode();
     pin4FocusNode = FocusNode();
+    otp1 = TextEditingController(text: '');
+    otp2 = TextEditingController(text: '');
+    otp3 = TextEditingController(text: '');
+    otp4 = TextEditingController(text: '');
   }
 
   @override
@@ -44,6 +64,22 @@ class _OtpFormState extends State<OtpForm> {
     if (value.length == 1) {
       focusNode!.requestFocus();
     }
+  }
+  
+  setOTP (String message) {
+    String OTP  = '';
+    int index = message.indexOf('follow:') + 9;
+    OTP = message.substring(index,index + 4);
+    print('0 ${OTP[0]}');
+    print('1 ${OTP[1]}');
+    print('2 ${OTP[2]}');
+    print('3 ${OTP[3]}');
+    setState ((){
+      otp1?.text = OTP[0];
+      otp2?.text = OTP[1];
+      otp3?.text = OTP[2];
+      otp4?.text = OTP[3];
+    });
   }
 
   @override
@@ -60,6 +96,7 @@ class _OtpFormState extends State<OtpForm> {
               children: [
                 CustomTextFormField(
                   otp: true,
+                  controller: otp1,
                   onChanged: (value) {
                     nextField(value, pin2FocusNode);
                   },
@@ -67,16 +104,19 @@ class _OtpFormState extends State<OtpForm> {
                 ),
                 CustomTextFormField(
                   otp: true,
+                  controller: otp2,
                   onChanged: (value) => nextField(value, pin3FocusNode),
                   focusNode: pin2FocusNode,
                 ),
                 CustomTextFormField(
                   otp: true,
+                  controller: otp3,
                   onChanged: (value) => nextField(value, pin4FocusNode),
                   focusNode: pin3FocusNode,
                 ),
                 CustomTextFormField(
                   otp: true,
+                  controller: otp4,
                   onChanged: (value) {
                     if (value.length == 1) {
                       pin4FocusNode!.unfocus();
