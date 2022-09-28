@@ -8,9 +8,9 @@ import '../appConstants.dart';
 ResetPasswordResponse resetResponse = ResetPasswordResponse();
 
 
-Future PostOTP(String newPassword, String confNewPassword, BuildContext context) async {
+Future PostNewPassword(String newPassword, String confNewPassword, BuildContext context) async {
 
-  final response = await http.post(
+  final response = await http.put(
     Uri.parse('${AppConstants.generalUrl}/password/reset'),
     headers: <String, String>{
       'Content-Type': 'application/json',

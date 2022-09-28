@@ -5,6 +5,7 @@ import 'package:kss/core/widgets/custom_text.dart';
 import '../../core/widgets/Custom_Text_Field.dart';
 
 import '../../core/widgets/custom_buttom.dart';
+import '../../model/api/postForgetPassword/postFprgetPasswordAPI.dart';
 
 class NewPassScreen extends StatefulWidget {
   const NewPassScreen({Key? key}) : super(key: key);
@@ -56,6 +57,7 @@ class _NewPassScreenState extends State<NewPassScreen> {
                 CustomMaterialButtom(
                     text: "تعيين",
                     press: () {
+                      PostNewPassword(password.text, confirmpassword.text, context);
 
                     }),
               ]),
