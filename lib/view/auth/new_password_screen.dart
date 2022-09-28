@@ -56,7 +56,7 @@ class _NewPassScreenState extends State<NewPassScreen> {
                 CustomMaterialButtom(
                     text: "تعيين",
                     press: () {
-                      Navigator.of(context).pushNamed('Login Screen');
+
                     }),
               ]),
             ),

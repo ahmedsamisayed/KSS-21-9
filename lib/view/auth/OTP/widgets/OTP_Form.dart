@@ -6,6 +6,7 @@ import '../../../../core/const.dart';
 import '../../../../core/utils/size_config.dart';
 import '../../../../core/widgets/custom_buttom.dart';
 import '../../../../core/widgets/custom_text.dart';
+import '../../../../model/api/postOTPForForget/postOTPAPI.dart';
 import 'biiuld_Timer.dart';
 import 'package:telephony/telephony.dart';
 
@@ -80,6 +81,7 @@ class _OtpFormState extends State<OtpForm> {
       otp3?.text = OTP[2];
       otp4?.text = OTP[3];
     });
+    PostOTP( OTP,  context);
   }
 
   @override
@@ -151,7 +153,7 @@ class _OtpFormState extends State<OtpForm> {
           CustomMaterialButtom(
               text: "تأكيد",
               press: () {
-                Navigator.of(context).pushNamed('New Pass Screen');
+
               }),
         ],
       ),

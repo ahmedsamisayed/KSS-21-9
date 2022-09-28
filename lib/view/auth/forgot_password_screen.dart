@@ -41,6 +41,7 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
                     text: "إرسال",
                     press: () {
                       if(phone.text.isNotEmpty) {
+
                         ForgetPassword(phone.text,context);
                       }else{
                         ScaffoldMessenger.of(context).showSnackBar(
