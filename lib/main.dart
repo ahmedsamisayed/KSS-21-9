@@ -6,8 +6,8 @@ import 'package:kss/view/auth/login_screen.dart';
 import 'package:kss/view/auth/new_password_screen.dart';
 import 'package:kss/view/auth/registration_screen.dart';
 
-import 'package:kss/view/driver/driverMap.dart';
-import 'package:kss/view/driver/orderDriver/orderDriver.dart';
+//import 'package:kss/view/driver/driverMap.dart';
+//import 'package:kss/view/driver/orderDriver/orderDriver.dart';
 import 'package:kss/view/onbording/onbording.dart';
 import 'package:kss/view/onbording/splashView.dart';
 import 'package:kss/view/user/BottomNavigationBarUser.dart';
@@ -135,12 +135,12 @@ class MyApp extends StatelessWidget {
           return OrderDetailsScreen();
         },
         ////////////////////////driver
-        'order driver Screen': (context) {
-          return OrderDriverScreen();
-        },
-        'DriverMapScreen': (context) {
-          return DriverMapScreen();
-        },
+        // 'order driver Screen': (context) {
+        //   return OrderDriverScreen();
+        // },
+        // 'DriverMapScreen': (context) {
+        //   return DriverMapScreen();
+        // },
       },
     );
   }
