@@ -1,5 +1,8 @@
 //import 'dart:io';
 
+import 'package:flutter/cupertino.dart';
+
+import '../../../core/widgets/snackbar_messenger.dart';
 import '../appConstants.dart';
 import 'registerModule.dart';
 import 'package:http/http.dart'as http;
@@ -7,7 +10,7 @@ import 'dart:convert';
 
 
 
-Future<RegisterResponse> registerUser(String phone,String password, String confPassword) async {
+Future<RegisterResponse> registerUser(String phone,String password, String confPassword, BuildContext context) async {
   //RegisterResult registerResult = RegisterResult();
   //try {
   final response = await http.post(
@@ -22,19 +25,24 @@ Future<RegisterResponse> registerUser(String phone,String password, String confP
     }),
   );
   if (response.statusCode == 200) {
-    //registerResult.result = 'Registration Done successfully';
+    showScaffoldSnackBar('تم التسجيل بنجاح . قم بتسجيل الدخول .', context);
+    Navigator.of(context).pushNamed('OTP Screen Register');
     return RegisterResponse.fromJson(jsonDecode(response.body));
   }
   else if(response.statusCode == 401) {
-    //registerResult.result = 'Registration Done successfully';
-    //return RegisterResponse.fromJson(jsonDecode(response.body));
-    throw Exception('لم تتوافق كلمة السر');
+    showScaffoldSnackBar('لم تتوافق كلمة السر', context);
+    return RegisterResponse.fromJson(jsonDecode(response.body));
+    //throw Exception('لم تتوافق كلمة السر');
   } else if (response.statusCode == 500) {
+    showScaffoldSnackBar('لم تقم بادخال الخانات المطلوبة او انك قد قمت بالتسجيل مسبقا', context);
+    return RegisterResponse.fromJson(jsonDecode(response.body));
     //registerResult.result = 'Registration Done successfully';
     // return RegisterResponse.fromJson(jsonDecode(response.body));
-    throw Exception('لم تقم بادخال الخانات المطلوبة او انك قد قمت بالتسجيل مسبقا');
+    //throw Exception('لم تقم بادخال الخانات المطلوبة او انك قد قمت بالتسجيل مسبقا');
   } else {
-    throw Exception('حدثت مشكلة الرجاء المحاولة مرة اخرى');
+    showScaffoldSnackBar('حدثت مشكلة الرجاء المحاولة مرة اخرى', context);
+    return RegisterResponse.fromJson(jsonDecode(response.body));
+    //throw Exception('حدثت مشكلة الرجاء المحاولة مرة اخرى');
   }
 }
 

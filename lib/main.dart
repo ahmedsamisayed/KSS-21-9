@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:kss/view/auth/OTP/OTP_Screen.dart';
+import 'package:kss/view/auth/OTP/OTP_Screen_Register.dart';
 import 'package:kss/view/auth/forgot_password_screen.dart';
 import 'package:kss/view/auth/login_screen.dart';
 import 'package:kss/view/auth/new_password_screen.dart';
@@ -71,6 +72,9 @@ class MyApp extends StatelessWidget {
         },
         'OTP Screen': ((context) {
           return OTPScreen();
+        }),
+        'OTP Screen Register': ((context) {
+          return OTPScreenRegister();
         }),
         'New Pass Screen': ((context) {
           return NewPassScreen();

@@ -79,11 +79,12 @@ class _RegisterationScreenState extends State<RegisterationScreen> {
                 CustomMaterialButtom(
                     text: "إنشاء حساب",
                     press: () {
-                     Navigator.of(context).push(MaterialPageRoute(builder: (context)=> CheckForRegister(
-                       phone: phone.text,
-                       passWord: password.text,
-                       confPassword: confirmpassword.text,
-                     )));
+                      registerUser(phone.text,password.text,confirmpassword.text,context);
+                     // Navigator.of(context).push(MaterialPageRoute(builder: (context)=> CheckForRegister(
+                     //   phone: phone.text,
+                     //   passWord: password.text,
+                     //   confPassword: confirmpassword.text,
+                     // )));
                     }),
                 CustomfaltlButtom(
                   text: " لديك حساب مسبق ؟",

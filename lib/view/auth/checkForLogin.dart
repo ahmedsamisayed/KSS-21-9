@@ -32,7 +32,7 @@ class _CheckForLoginState extends State<CheckForLogin> {
   void initState() {
     // TODO: implement initState
     super.initState();
-    loginResult = loginUser(widget.phone, widget.passWord);
+    //loginResult = loginUser(widget.phone, widget.passWord);
   }
 
   @override

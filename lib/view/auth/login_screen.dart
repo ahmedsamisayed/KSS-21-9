@@ -84,32 +84,18 @@ class _LoginScreenState extends State<LoginScreen> {
                 CustomMaterialButtom(
                     text: "دخول",
                     press: () {
+                      loginUser(phone.text, password.text, context);
 
                       // setState(() {
                       //
                       // });
                       //loginResult = loginUser(phone.text, password.text);
-                      Navigator.of(context).push(MaterialPageRoute(builder: (context)=> CheckForLogin(
-                        phone: phone.text,
-                        passWord: password.text
-
-
-                      )));
-
-                      // ScaffoldMessenger.of(context).showSnackBar(
-                      //     SnackBar(
-                      //       duration: const Duration(milliseconds: 2000),
-                      //       backgroundColor: Color(0xffd0c9c0),
-                      //       margin: const EdgeInsets.all(100.0),
-                      //       padding: const EdgeInsets.symmetric(
-                      //         horizontal: 8.0,
-                      //       ),
-                      //       behavior: SnackBarBehavior.floating,
-                      //       shape: RoundedRectangleBorder(
-                      //         borderRadius: BorderRadius.circular(10.0),
-                      //       ),
-                      //       content: buildLoginFutureBuilder(loginResult),
-                      //     ));
+                      // Navigator.of(context).push(MaterialPageRoute(builder: (context)=> CheckForLogin(
+                      //   phone: phone.text,
+                      //   passWord: password.text
+                      //
+                      //
+                      // )));
 
                     }),
                 CustomfaltlButtom(

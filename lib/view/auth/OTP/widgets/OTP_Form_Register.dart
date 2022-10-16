@@ -14,13 +14,13 @@ final Telephony telephony = Telephony.instance;
 
 FocusNode myFocusNode = new FocusNode();
 
-class OtpForm extends StatefulWidget {
+class OtpFormRegister extends StatefulWidget {
   @override
-  State<OtpForm> createState() => _OtpFormState();
+  State<OtpFormRegister> createState() => _OtpFormRegisterState();
   var mj = buildTimer();
 }
 
-class _OtpFormState extends State<OtpForm> {
+class _OtpFormRegisterState extends State<OtpFormRegister> {
   // ignore: prefer_const_constructors_in_immutables
   FocusNode? pin2FocusNode;
 
@@ -66,7 +66,7 @@ class _OtpFormState extends State<OtpForm> {
       focusNode!.requestFocus();
     }
   }
-  
+
   setOTP (String message) {
     String OTP  = '';
     int index = message.indexOf('follow:') + 9;

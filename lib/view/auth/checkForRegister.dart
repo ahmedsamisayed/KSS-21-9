@@ -36,7 +36,7 @@ class _CheckForRegisterState extends State<CheckForRegister> {
   void initState() {
     // TODO: implement initState
     super.initState();
-    RegisterResult = registerUser(widget.phone, widget.passWord, widget.confPassword);
+    //RegisterResult = registerUser(widget.phone, widget.passWord, widget.confPassword);
   }
 
   @override
