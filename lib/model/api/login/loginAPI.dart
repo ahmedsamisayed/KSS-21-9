@@ -12,7 +12,6 @@ import '../appConstants.dart';
 Future<LoginResponse> loginUser(String phone,String password, BuildContext context) async {
   //RegisterResult registerResult = RegisterResult();
   //try {
-  LoginResponse loginResponse = LoginResponse();
   final response = await http.post(
     Uri.parse('${AppConstants.generalUrl}/login'),
     headers: <String, String>{
@@ -23,12 +22,16 @@ Future<LoginResponse> loginUser(String phone,String password, BuildContext conte
       'password': password
     }),
   );
+  LoginResponse loginResponse = LoginResponse.fromJson(jsonDecode(response.body));
   if (response.statusCode == 200) {
-    AppConstants.userAccessToken = loginResponse.token;
-    AppConstants.userId = loginResponse.user!.sId;
-    AppConstants.userPhone = loginResponse.user!.phone;
-    AppConstants.userName = loginResponse.user!.name;
-    AppConstants.userEmail = loginResponse.user!.email;
+    print(response);
+     AppConstants.userAccessToken = loginResponse.token;
+     AppConstants.userId = loginResponse.user!.sId;
+     AppConstants.userPhone = loginResponse.user!.phone;
+     AppConstants.userName = loginResponse.user!.name;
+     AppConstants.userEmail = loginResponse.user!.email;
+     print(loginResponse);
+
     showScaffoldSnackBar('تم تسجيل الدخول بنجاح', context);
 
     Navigator.of(context).pushNamed('Home Navigation User Screen');
