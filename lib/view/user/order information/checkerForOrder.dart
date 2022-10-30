@@ -57,6 +57,7 @@ class _CheckerForOrderPostState extends State<CheckerForOrderPost> {
               MyListBasket.clearTotalPrice = 0.0;
               OrderData.phone = '';
               OrderData.alterPhone = '';
+              OrderData.name = '';
               OrderData.position = null;
               OrderData.image = null;
 

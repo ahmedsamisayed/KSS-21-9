@@ -4,6 +4,7 @@ import 'package:google_maps_flutter/google_maps_flutter.dart';
 class OrderData {
   static String phone = '';
   static String alterPhone = '';
+  static String name = '';
   static String selectedItem = 'الخرطوم';
   static String? position;
   static double positionDataLatitude = 0.0 ;

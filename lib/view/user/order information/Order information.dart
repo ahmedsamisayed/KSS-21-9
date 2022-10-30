@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:kss/core/utils/size_config.dart';
+import 'package:kss/core/widgets/snackbar_messenger.dart';
 import 'package:kss/model/api/appConstants.dart';
 import 'package:kss/model/api/postOrder/postOrderResponse.dart';
 import 'package:kss/view/user/basket/widgets/basketlist.dart';
@@ -68,6 +69,8 @@ class _OrderInformationScreenState extends State<OrderInformationScreen> {
   TextEditingController alternate_phone =  TextEditingController(text: '${OrderData.alterPhone}');
 
   TextEditingController phone =  TextEditingController(text: '${OrderData.phone}');
+  TextEditingController name =  TextEditingController(text: '${OrderData.name}');
+
   TextEditingController address = new TextEditingController();
   GlobalKey<FormState> formStateOrderInformation = new GlobalKey<FormState>();
 
@@ -167,6 +170,18 @@ class _OrderInformationScreenState extends State<OrderInformationScreen> {
 
                       },
                     ),
+                    // CustomTextField(
+                    //   label: "اسم صاحب الطلب",
+                    //   myController: name,
+                    //   hint: "اسم صاحب الطلب",
+                    //   //keyboardType: TextInputType.,
+                    //   onChanged: (TexT) {
+                    //     setState(() {
+                    //       OrderData.name = TexT;
+                    //     });
+                    //
+                    //   },
+                    // ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: <Widget>[
@@ -229,6 +244,7 @@ class _OrderInformationScreenState extends State<OrderInformationScreen> {
           setState(() {
             OrderData.phone = phone.text;
             OrderData.alterPhone = alternate_phone.text;
+            OrderData.name = name.text;
             OrderData.selectedItem = selectedItem.toString();
           });
 
@@ -299,25 +315,26 @@ class _OrderInformationScreenState extends State<OrderInformationScreen> {
                         text: "تأكيد الطلب",
                         press: () {
                           if ([OrderData.phone,OrderData.alterPhone,
-                          OrderData.position,OrderData.image
+                          OrderData.position,OrderData.image,OrderData.name
                           ].any((x) => x == null)
                               ){
-                            ScaffoldMessenger.of(context).showSnackBar(
-                                SnackBar(
-                                  duration: const Duration(milliseconds: 2000),
-                                  backgroundColor: Color(0xffd0c9c0),
-                                  margin: const EdgeInsets.all(100.0),
-                                  padding: const EdgeInsets.symmetric(
-                                    horizontal: 8.0,
-                                  ),
-                                  behavior: SnackBarBehavior.floating,
-                                  shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(10.0),
-                                  ),
-                                  content: Text('لم تقم بملء كل الخانات المطلوبة بصورة صحيحة' ,
-                                    style: TextStyle(color: Colors.black, fontSize: 15),
-                                  ),
-                                ));
+                            showScaffoldSnackBar('لم تقم بملء كل الخانات المطلوبة بصورة صحيحة', context);
+                            // ScaffoldMessenger.of(context).showSnackBar(
+                            //     SnackBar(
+                            //       duration: const Duration(milliseconds: 2000),
+                            //       backgroundColor: Color(0xffd0c9c0),
+                            //       margin: const EdgeInsets.all(100.0),
+                            //       padding: const EdgeInsets.symmetric(
+                            //         horizontal: 8.0,
+                            //       ),
+                            //       behavior: SnackBarBehavior.floating,
+                            //       shape: RoundedRectangleBorder(
+                            //         borderRadius: BorderRadius.circular(10.0),
+                            //       ),
+                            //       content: Text('لم تقم بملء كل الخانات المطلوبة بصورة صحيحة' ,
+                            //         style: TextStyle(color: Colors.black, fontSize: 15),
+                            //       ),
+                            //     ));
                           }
                           else {
                             Navigator.of(context).push( MaterialPageRoute(

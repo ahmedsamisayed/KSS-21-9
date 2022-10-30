@@ -24,17 +24,21 @@ Future<LoginResponse> loginUser(String phone,String password, BuildContext conte
   );
   LoginResponse loginResponse = LoginResponse.fromJson(jsonDecode(response.body));
   if (response.statusCode == 200) {
-    print(response);
      AppConstants.userAccessToken = loginResponse.token;
      AppConstants.userId = loginResponse.user!.sId;
      AppConstants.userPhone = loginResponse.user!.phone;
      AppConstants.userName = loginResponse.user!.name;
      AppConstants.userEmail = loginResponse.user!.email;
-     print(loginResponse);
 
-    showScaffoldSnackBar('تم تسجيل الدخول بنجاح', context);
+     if (loginResponse.user!.role == 'driver') {
+       showScaffoldSnackBar('لا يمكنك الدخول بحساب سائق وانت مستخدم عادي ', context);
+     }
 
-    Navigator.of(context).pushNamed('Home Navigation User Screen');
+     else {
+       showScaffoldSnackBar('تم تسجيل الدخول بنجاح', context);
+       Navigator.of(context).pushNamed('Home Navigation User Screen');
+     }
+
     return loginResponse;
   }
   else if(response.statusCode == 400) {

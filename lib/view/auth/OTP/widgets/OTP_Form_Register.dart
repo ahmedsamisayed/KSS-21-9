@@ -6,6 +6,7 @@ import '../../../../core/const.dart';
 import '../../../../core/utils/size_config.dart';
 import '../../../../core/widgets/custom_buttom.dart';
 import '../../../../core/widgets/custom_text.dart';
+import '../../../../model/api/OTPforRegister/PostOTPRegisterAPI.dart';
 import '../../../../model/api/postOTPForForget/postOTPAPI.dart';
 import 'biiuld_Timer.dart';
 import 'package:telephony/telephony.dart';
@@ -81,7 +82,7 @@ class _OtpFormRegisterState extends State<OtpFormRegister> {
       otp3?.text = OTP[2];
       otp4?.text = OTP[3];
     });
-    PostOTP( OTP,  context);
+    PostOTPForRegister( OTP,  context);
   }
 
   @override
@@ -159,7 +160,7 @@ class _OtpFormRegisterState extends State<OtpFormRegister> {
 
                 String finalOTP = '${otp1?.text}${otp2?.text}${otp3?.text}${otp4?.text}';
 
-                PostOTP( finalOTP,  context);
+                PostOTPForRegister( finalOTP,  context);
                 //Navigator.of(context).pushNamed('New Pass Screen');
 
 

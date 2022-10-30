@@ -3,6 +3,7 @@
 import 'package:flutter/cupertino.dart';
 
 import '../../../core/widgets/snackbar_messenger.dart';
+import '../OTPforRegister/PostRegisterNumberAPI.dart';
 import '../appConstants.dart';
 import 'registerModule.dart';
 import 'package:http/http.dart'as http;
@@ -25,8 +26,11 @@ Future<RegisterResponse> registerUser(String phone,String password, String confP
     }),
   );
   if (response.statusCode == 200) {
-    showScaffoldSnackBar('تم التسجيل بنجاح . قم بتسجيل الدخول .', context);
-    Navigator.of(context).pushNamed('OTP Screen Register');
+    //showScaffoldSnackBar('تم التسجيل بنجاح . قم بتسجيل الدخول .', context);
+    //Navigator.of(context).pushNamed('OTP Screen Register');
+    AppConstants.currentRegisterNumberForOTP = phone;
+    PostPhoneForRegisterOTP(context);
+
     return RegisterResponse.fromJson(jsonDecode(response.body));
   }
   else if(response.statusCode == 401) {

@@ -168,6 +168,7 @@ class _BasketScreenState extends State<BasketScreen> {
                     else {
                       OrderData.phone = '';
                       OrderData.alterPhone = '';
+                      OrderData.name = '';
                       OrderData.position = null;
                       OrderData.image = null;
                       Navigator.of(context).push( MaterialPageRoute(
