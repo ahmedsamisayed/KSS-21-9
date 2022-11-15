@@ -170,18 +170,18 @@ class _OrderInformationScreenState extends State<OrderInformationScreen> {
 
                       },
                     ),
-                    // CustomTextField(
-                    //   label: "اسم صاحب الطلب",
-                    //   myController: name,
-                    //   hint: "اسم صاحب الطلب",
-                    //   //keyboardType: TextInputType.,
-                    //   onChanged: (TexT) {
-                    //     setState(() {
-                    //       OrderData.name = TexT;
-                    //     });
-                    //
-                    //   },
-                    // ),
+                    CustomTextField(
+                      label: "اسم صاحب الطلب",
+                      myController: name,
+                      hint: "اسم صاحب الطلب",
+                      //keyboardType: TextInputType.,
+                      onChanged: (TexT) {
+                        setState(() {
+                          OrderData.name = TexT;
+                        });
+
+                      },
+                    ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: <Widget>[

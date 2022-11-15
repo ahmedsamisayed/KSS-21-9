@@ -189,7 +189,7 @@ Future postOrderAndImage(XFile file) async {
       {
     "shippingInfo":
     {
-      //"name": OrderData.name,
+      "userName": OrderData.name,
       "address": OrderData.selectedItem,
 
       "phoneNo1": OrderData.phone,
