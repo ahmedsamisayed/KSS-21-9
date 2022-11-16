@@ -7,6 +7,8 @@ import '../../../../core/utils/size_config.dart';
 import '../../../../core/widgets/custom_buttom.dart';
 import '../../../../core/widgets/custom_text.dart';
 import '../../../../model/api/OTPforRegister/PostOTPRegisterAPI.dart';
+import '../../../../model/api/OTPforRegister/PostRegisterNumberAPI.dart';
+import '../../../../model/api/appConstants.dart';
 import '../../../../model/api/postOTPForForget/postOTPAPI.dart';
 import 'biiuld_Timer.dart';
 import 'package:telephony/telephony.dart';
@@ -135,14 +137,18 @@ class _OtpFormRegisterState extends State<OtpFormRegister> {
           GestureDetector(
             onTap: () {
               // OTP code resend
-              Navigator.pushNamed(context, "OTP Screen");
+              if (AppConstants.reSendOTP) {
+                //Navigator.pushNamed(context, "OTP Screen");
+                AppConstants.reSendOTP = false;
+                PostPhoneForRegisterOTP(context);
+              }
             },
-            // child: CustomMaterialButtom(
-            //     text: "إعادة إرسال",
-            //     press: () {
-            //       Navigator.of(context).pushNamed('OTP Screen');
-            //
-            //     }),
+          //   // child: CustomMaterialButtom(
+          //   //     text: "إعادة إرسال",
+          //   //     press: () {
+          //   //       Navigator.of(context).pushNamed('OTP Screen');
+          //   //
+          //   //     }),
             child: CustomText(
               text: "إعادة إرسال",
               fontSize: 15,

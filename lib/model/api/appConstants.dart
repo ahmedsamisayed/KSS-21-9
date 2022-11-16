@@ -13,5 +13,6 @@ class AppConstants{
   static String? userPhoneForForgetPassword;
   static String? OTP;
   static String? currentRegisterNumberForOTP;
+  static bool reSendOTP = false;
 
 }

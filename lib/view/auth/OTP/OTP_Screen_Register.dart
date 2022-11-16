@@ -5,6 +5,7 @@ import 'package:kss/view/auth/OTP/widgets/OTP_Form.dart';
 import 'package:kss/view/auth/OTP/widgets/OTP_Form_Register.dart';
 
 import '../../../core/widgets/custom_buttom.dart';
+import '../registration_screen.dart';
 
 class OTPScreenRegister extends StatefulWidget {
   const OTPScreenRegister({Key? key}) : super(key: key);
@@ -24,7 +25,18 @@ class _OTPScreenRegisterState extends State<OTPScreenRegister> {
   @override
   Widget build(BuildContext context) {
     SizeConfig();
-    return Directionality(
+    return WillPopScope(
+        onWillPop: () async {
+      final shouldPop = await showDialog<bool>(
+        context: context,
+        builder: (context) {
+          return RegisterationScreen();
+        },
+      );
+      return shouldPop!;
+    },
+    child:
+      Directionality(
         textDirection: TextDirection.rtl,
         child: Scaffold(
           body: Padding(
@@ -47,6 +59,6 @@ class _OTPScreenRegisterState extends State<OTPScreenRegister> {
               // OtpForm()
             ]),
           ),
-        ));
+        )));
   }
 }
